@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test-app-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      tier: frontend
+      app: test-app
+  template:
+    metadata:
+      labels:
+        tier: frontend
+        app: test-app
+    spec:
+      containers:
+        - name: test-app
+          image: sarojkafle5/test-app:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+
